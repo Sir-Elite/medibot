@@ -1,3 +1,9 @@
+import subprocess
+import sys
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "sentence-transformers"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "langchain-google-genai"])
+
 from flask import Flask, render_template, jsonify, request
 from src.helper import download_hugging_face_embeddings
 from langchain_pinecone import PineconeVectorStore
@@ -8,10 +14,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 from src.prompt import *
 import os
-import subprocess
-import sys
-
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "sentence-transformers"])
 
 
 app = Flask(__name__)
